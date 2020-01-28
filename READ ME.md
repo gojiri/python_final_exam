@@ -114,6 +114,9 @@ class MyInteger():
                     
                     self.value = self.value - self.log[len(self.log)-1-i][1]
                     self.log.pop()
+        
+        return self.value
+                    
         else:
             
             for i in range(rollback_num):
@@ -126,3 +129,10 @@ class MyInteger():
                     
                     self.value = self.value - self.log[len(self.log)-1-i][1]
                     self.log.pop()
+                    
+        return self.value
+        
+    def resetCurrentVariable(self):
+    
+        self.log == []
+        return self.value
