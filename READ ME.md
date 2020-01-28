@@ -115,7 +115,7 @@ class MyInteger():
                     self.value = self.value - self.log[len(self.log)-1-i][1]
                     self.log.pop()
         
-        return self.value
+            return self.value
                     
         else:
             
@@ -130,7 +130,7 @@ class MyInteger():
                     self.value = self.value - self.log[len(self.log)-1-i][1]
                     self.log.pop()
                     
-        return self.value
+            return self.value
         
     def resetCurrentVariable(self):
     
