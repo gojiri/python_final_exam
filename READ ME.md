@@ -52,7 +52,7 @@ class MyInteger():
         elif type(Add_value) == float:
             self.value = self.value + int(Add_value)
             self.log.append(("A",int(Add_value)))
-            return iself.value
+            return self.value
         
         elif type(Add_value) == int:
             self.value = self.value + int(Add_value)
