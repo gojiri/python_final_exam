@@ -74,7 +74,7 @@ class MyInteger():
         elif type(Sub_value) == float:
             self.value = self.value - int(Sub_value)
             self.log.append(("S",int(Sub_value)))
-            return iself.value
+            return self.value
         
         elif type(Sub_value) == int:
             self.value = self.value - int(Sub_value)
