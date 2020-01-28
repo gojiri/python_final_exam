@@ -8,6 +8,8 @@ class MyInteger():
     
     def __init__(self,user_value = 0):
         
+        self.log = []
+        
         if type(user_value) == int:
             self.value = user_value
         
@@ -22,7 +24,7 @@ class MyInteger():
         
         else:
             self.value = 0
-        
+    
     def __eq__(self, other):
         
         if str(type(other)) == "<class '__main__.MyInteger'>":
@@ -39,41 +41,49 @@ class MyInteger():
         
         else :
             return False
-            
+    
     def pressAdd(self,Add_value):
         
         if str(type(Add_value)) == "<class '__main__.MyInteger'>":
             self.value = self.value + Add_value.value
+            self.log.append(("A",Add_value.value))
             return self.value
         
         elif type(Add_value) == float:
             self.value = self.value + int(Add_value)
+            self.log.append(("A",int(Add_value)))
             return iself.value
         
         elif type(Add_value) == int:
             self.value = self.value + int(Add_value)
+            self.log.append(("A",int(Add_value)))
             return self.value
         
         elif type(Add_value) == str:
             self.value = self.value + int(Add_value)
+            self.log.append(("A",int(Add_value)))
             return self.value
     
     def pressSub(self,Sub_value):
         
         if str(type(Sub_value)) == "<class '__main__.MyInteger'>":
             self.value = self.value - Sub_value.value
+            self.log.append(("S",Sub_value.value))
             return self.value
         
         elif type(Sub_value) == float:
             self.value = self.value - int(Sub_value)
+            self.log.append(("S",int(Sub_value)))
             return iself.value
         
         elif type(Sub_value) == int:
             self.value = self.value - int(Sub_value)
+            self.log.append(("S",int(Sub_value)))
             return self.value
         
         elif type(Sub_value) == str:
             self.value = self.value - int(Sub_value)
+            self.log.append(("S",int(Sub_value)))
             return self.value
     
     def getCurrentVariable(self, oper_mode = None): #oper_mode : hex,oct,bin,None
@@ -89,3 +99,30 @@ class MyInteger():
             
         elif oper_mode == None:
             return self.value
+    
+    def rollbackCurrentVariable(self,rollback_num):
+        
+        if rollback_num > len(self.log):
+            
+            for i in range(len(self.log)):
+                if self.log[len(self.log)-1-i][0] == "S":
+                    
+                    self.value = self.value + self.log[len(self.log)-1-i][1]
+                    self.log.pop()
+                    
+                if self.log[len(self.log)-1-i][0] == "A":
+                    
+                    self.value = self.value - self.log[len(self.log)-1-i][1]
+                    self.log.pop()
+        else:
+            
+            for i in range(rollback_num):
+                if self.log[len(self.log)-1-i][0] == "S":
+                    
+                    self.value = self.value + self.log[len(self.log)-1-i][1]
+                    self.log.pop()
+                    
+                if self.log[len(self.log)-1-i][0] == "A":
+                    
+                    self.value = self.value - self.log[len(self.log)-1-i][1]
+                    self.log.pop()
