@@ -75,3 +75,17 @@ class MyInteger():
         elif type(Sub_value) == str:
             self.value = self.value - int(Sub_value)
             return self.value
+    
+    def getCurrentVariable(self, oper_mode = None): #oper_mode : hex,oct,bin,None
+        
+        if oper_mode == "hex":
+            return hex(self.value)
+        
+        elif oper_mode == "oct":
+            return oct(self.value)
+        
+        elif oper_mode == "bin":
+            return bin(self.value)
+            
+        elif oper_mode == None:
+            return self.value
