@@ -19,3 +19,6 @@ class MyInteger():
         elif str(type(user_value)) == "<class '__main__.MyInteger'>":
             self.value = user_value.value
         
+        else:
+            self.value = 0
+        
