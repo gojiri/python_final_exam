@@ -23,7 +23,7 @@ class MyInteger():
         else:
             self.value = 0
         
- def __eq__(self, other):
+    def __eq__(self, other):
         
         if str(type(other)) == "<class '__main__.MyInteger'>":
             return other.value == self.value
@@ -39,3 +39,39 @@ class MyInteger():
         
         else :
             return False
+            
+    def pressAdd(self,Add_value):
+        
+        if str(type(Add_value)) == "<class '__main__.MyInteger'>":
+            self.value = self.value + Add_value.value
+            return self.value
+        
+        elif type(Add_value) == float:
+            self.value = self.value + int(Add_value)
+            return iself.value
+        
+        elif type(Add_value) == int:
+            self.value = self.value + int(Add_value)
+            return self.value
+        
+        elif type(Add_value) == str:
+            self.value = self.value + int(Add_value)
+            return self.value
+    
+    def pressSub(self,Sub_value):
+        
+        if str(type(Sub_value)) == "<class '__main__.MyInteger'>":
+            self.value = self.value - Sub_value.value
+            return self.value
+        
+        elif type(Sub_value) == float:
+            self.value = self.value - int(Sub_value)
+            return iself.value
+        
+        elif type(Sub_value) == int:
+            self.value = self.value - int(Sub_value)
+            return self.value
+        
+        elif type(Sub_value) == str:
+            self.value = self.value - int(Sub_value)
+            return self.value
