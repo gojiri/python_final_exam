@@ -105,14 +105,14 @@ class MyInteger():
         if rollback_num > len(self.log):
             
             for i in range(len(self.log)):
-                if self.log[len(self.log)-1-i][0] == "S":
+                if self.log[-1][0] == "S":
                     
-                    self.value = self.value + self.log[len(self.log)-1-i][1]
+                    self.value = self.value + self.log[-1][1]
                     self.log.pop()
                     
-                if self.log[len(self.log)-1-i][0] == "A":
+                elif self.log[-1][0] == "A":
                     
-                    self.value = self.value - self.log[len(self.log)-1-i][1]
+                    self.value = self.value - self.log[-1][1]
                     self.log.pop()
         
             return self.value
@@ -120,19 +120,21 @@ class MyInteger():
         else:
             
             for i in range(rollback_num):
-                if self.log[len(self.log)-1-i][0] == "S":
+                if self.log[-1][0] == "S":
                     
-                    self.value = self.value + self.log[len(self.log)-1-i][1]
+                    self.value = self.value + self.log[-1][1]
                     self.log.pop()
                     
-                if self.log[len(self.log)-1-i][0] == "A":
+                elif self.log[-1][0] == "A":
                     
-                    self.value = self.value - self.log[len(self.log)-1-i][1]
+                    self.value = self.value - self.log[-1][1]
                     self.log.pop()
                     
             return self.value
         
     def resetCurrentVariable(self):
     
-        self.log == []
-        return self.value
+        self.log = []
+        current_value = self.value
+        self.value = 0
+        return current_value
